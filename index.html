@@ -1,152 +1,1042 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Charlie Brown Jr. - Portfólio Futurista</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlie Brown Jr - Tributo</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Luckiest+Guy&family=Montserrat:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #000000;
+            --primary-red: #FF0000;
+            --primary-yellow: #FFCC00;
+            --secondary-gray: #333333;
+            --secondary-dark: #1A1A1A;
+            --secondary-light: #F5F5F5;
+            --accent-dark: #8B0000;
+            --accent-gold: #D4AF37;
+            --text-light: #FFFFFF;
+            --text-dark: #000000;
+            --font-title: 'Luckiest Guy', cursive;
+            --font-special: 'Rock Salt', cursive;
+            --font-body: 'Montserrat', sans-serif;
+            --base-font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--primary-black);
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: var(--base-font-size);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 204, 0, 0.1) 0%, transparent 20%);
+        }
+
+        body.high-contrast {
+            background-color: #000;
+            color: #fff;
+            background-image: none;
+        }
+
+        body.high-contrast header {
+            background-color: #000;
+            border-bottom: 3px solid #fff;
+        }
+
+        body.high-contrast .skate-section {
+            background-color: #000;
+            border: 2px solid #fff;
+        }
+
+        body.high-contrast .year {
+            background-color: #fff;
+            color: #000;
+        }
+
+        body.high-contrast button {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-red);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .accessibility-bar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: var(--secondary-dark);
+            padding: 10px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            border-bottom-left-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .accessibility-bar button {
+            background: var(--primary-yellow);
+            border: none;
+            color: var(--text-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .accessibility-bar button:hover {
+            background: var(--primary-red);
+            color: var(--text-light);
+            transform: scale(1.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-dark) 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 3px solid var(--primary-red);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 204, 0, 0.1) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: var(--font-special);
+            font-size: 3.8rem;
+            color: var(--primary-yellow);
+            text-shadow: 3px 3px 0 var(--primary-red);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: var(--primary-yellow);
+            font-size: 1.3rem;
+            font-family: var(--font-title);
+            text-shadow: 1px 1px 0 var(--primary-black);
+        }
+
+        nav {
+            background: linear-gradient(90deg, var(--primary-red) 0%, var(--accent-dark) 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-yellow);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .skate-section {
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--secondary-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--primary-yellow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skate-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-red) 0%, var(--primary-yellow) 100%);
+        }
+
+        h2 {
+            font-family: var(--font-title);
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-yellow);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 2px 2px 0 var(--primary-black);
+            border-bottom: 2px solid var(--primary-red);
+        }
+
+        h2 i {
+            color: var(--primary-red);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+
+        .year {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--accent-dark) 100%);
+            color: var(--text-light);
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-right: 1.5rem;
+            min-width: 80px;
+            text-align: center;
+            height: fit-content;
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-item .content {
+            flex: 1;
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-yellow);
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 0 var(--primary-black);
+        }
+
+        .band-history {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--primary-red);
+            position: relative;
+        }
+
+        .band-history::before {
+            content: """;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            opacity: 0.2;
+            font-family: var(--font-title);
+        }
+
+        .band-history p {
+            font-family: var(--font-body);
+            line-height: 1.8;
+        }
+
+        /* NOVA GALERIA COM FOTOS */
+        .gallery-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--primary-yellow);
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 0 var(--primary-black);
+        }
+
+        .free-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 0 auto;
+        }
+
+        .gallery-item-free {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            height: 280px;
+            background-color: var(--secondary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--primary-yellow);
+        }
+
+        .gallery-item-free:nth-child(odd) {
+            transform: rotate(-2deg);
+        }
+
+        .gallery-item-free:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .gallery-item-free:hover {
+            transform: scale(1.05) rotate(0deg);
+            border-color: var(--primary-red);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        .gallery-image-free {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-image-free img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item-free:hover .gallery-image-free img {
+            transform: scale(1.1);
+        }
+
+        .gallery-info-free {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 1.2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .gallery-item-free:hover .gallery-info-free {
+            transform: translateY(0);
+        }
+
+        .gallery-info-free h3 {
+            color: var(--primary-yellow);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 0 var(--primary-black);
+        }
+
+        .gallery-info-free p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-family: var(--font-body);
+        }
+
+        .upload-section {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border: 2px dashed var(--primary-yellow);
+            text-align: center;
+        }
+
+        .upload-section h3 {
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+        }
+
+        .upload-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .upload-btn:hover {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, #e6b800 100%);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .legacy-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            text-align: center;
+            font-family: var(--font-title);
+            color: var(--primary-yellow);
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 0 var(--primary-black);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icons a {
+            color: var(--primary-yellow);
+            font-size: 2.2rem;
+            transition: all 0.3s;
+            text-shadow: 1px 1px 0 var(--primary-black);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-red);
+            transform: translateY(-5px);
+        }
+
+        form {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--primary-yellow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--primary-yellow);
+            border-radius: 4px;
+            font-family: var(--font-body);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--accent-dark) 100%);
+            color: var(--text-light);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, #e6b800 100%);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .accessibility-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1.8rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--primary-yellow);
+            transition: all 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-red);
+        }
+
+        .feature i {
+            font-size: 2.8rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1.2rem;
+            text-shadow: 1px 1px 0 var(--primary-black);
+        }
+
+        .feature h3 {
+            color: var(--primary-yellow);
+            margin-bottom: 0.8rem;
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            text-shadow: 1px 1px 0 var(--primary-black);
+        }
+
+        .feature p {
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-dark) 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 3px solid var(--primary-red);
+            position: relative;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--primary-yellow) 50%, transparent 100%);
+        }
+
+        footer p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .free-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                --base-font-size: 14px;
+            }
+            
+            header h1 {
+                font-size: 2.8rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .year {
+                margin-right: 0;
+                margin-bottom: 1rem;
+                align-self: flex-start;
+            }
+            
+            .free-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 15px;
+            }
+            
+            .gallery-item-free {
+                height: 220px;
+            }
+            
+            .accessibility-features {
+                grid-template-columns: 1fr;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .social-icons a {
+                font-size: 1.8rem;
+            }
+            
+            .free-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <h1 class="logo-futurista">CHARLIE BROWN JR.</h1>
-      <nav>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    
+    <div class="accessibility-bar">
+        <button id="font-increase" title="Aumentar fonte" aria-label="Aumentar tamanho da fonte">
+            <i class="fas fa-text-height"></i>
+        </button>
+        <button id="font-decrease" title="Diminuir fonte" aria-label="Diminuir tamanho da fonte">
+            <i class="fas fa-text-width"></i>
+        </button>
+        <button id="high-contrast" title="Alto contraste" aria-label="Alternar modo de alto contraste">
+            <i class="fas fa-adjust"></i>
+        </button>
+    </div>
+    
+    <header>
+        <h1>Charlie Brown Jr</h1>
+        <p class="tagline">O legado que nunca termina</p>
+    </header>
+
+    <nav>
         <ul>
-          <li><a href="#historia">História</a></li>
-          <li><a href="#estilo">Estilo Musical</a></li>
-          <li><a href="#discografia">Discografia</a></li>
-          <li><a href="#legado">Legado</a></li>
-          <li>
-            <a href="#" id="botao-acessibilidade" class="acessibilidade-btn">Acessibilidade ▾</a>
-            <div id="opcoes-acessibilidade" class="opcoes-acessibilidade apresenta-lista">
-              <button id="aumentar-fonte">A+ Aumentar Fonte</button>
-              <button id="diminuir-fonte">A- Diminuir Fonte</button>
-            </div>
-          </li>
+            <li><a href="#historia">História</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#acessibilidade">Acessibilidade</a></li>
         </ul>
-      </nav>
-    </div>
-  </header>
+    </nav>
 
-  <main>
-    <!-- HERO -->
-    <section id="hero" class="hero-section">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h2 class="titulo-destaque">UM LEGADO DE ATITUDE E MÚSICA</h2>
-          <p class="subtitulo">A banda que marcou gerações com sua mistura de rap, rock e skate culture</p>
-          <button class="btn-futurista">Explorar História</button>
-        </div>
-        <div class="hero-image">
-          <div class="fx-holograma"></div>
-        </div>
-      </div>
-    </section>
+    <main id="main-content">
+        <section id="historia" class="skate-section">
+            <h2><i class="fas fa-history"></i> História da banda</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="year">1992</div>
+                    <div class="content">
+                        <h3>Origens em Santos</h3>
+                        <p>Formada por Chorão, Champignon, Thiago Castanho, Renato Pelado e Marcão. A banda trouxe uma mistura única de rock, rap, reggae e punk rock.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="year">1997</div>
+                    <div class="content">
+                        <h3>Primeiro Álbum</h3>
+                        <p>"Transpiração Continua Prolongada" marcou a estreia da banda, com sucessos como "Proibida pra Mim" e "Lugar ao Sol".</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="band-history">
+                <p>Charlie Brown Jr foi uma das bandas mais importantes do rock brasileiro dos anos 90 e 2000. Com letras que abordavam o cotidiano dos jovens, problemas sociais e a cultura do surf e skate, tornaram-se uma das bandas mais populares do Brasil.</p>
+            </div>
+        </section>
 
-    <!-- HISTÓRIA -->
-    <section id="historia" class="section-futurista">
-      <h2 class="section-title">História da Banda</h2>
-      <div class="cards-container">
-        <div class="card-futurista">
-          <div class="card-icon">1992</div>
-          <h3>Origens em Santos</h3>
-          <p>A banda foi formada em Santos por Chorão, Champignon, Marcão, Thiago Castanho e Renato Pelado, unindo a cultura do skate com o rock brasileiro.</p>
-        </div>
-        <div class="card-futurista">
-          <div class="card-icon">1997</div>
-          <h3>Primeiro Álbum</h3>
-          <p><em>Transpiração Contínua Prolongada</em> trouxe sucessos como "Proibida Pra Mim" e abriu as portas do cenário nacional para o grupo.</p>
-        </div>
-        <div class="card-futurista">
-          <div class="card-icon">2000</div>
-          <h3>Reconhecimento Nacional</h3>
-          <p>Com álbuns e turnês lotadas, a banda se consolidou como porta-voz de uma geração, com letras que refletiam a vida urbana e a juventude brasileira.</p>
-        </div>
-      </div>
-    </section>
+        <section id="galeria" class="skate-section">
+            <h2><i class="fas fa-spray-can"></i> Galeria</h2>
+            <p class="gallery-intro">Confira momentos marcantes da história do Charlie Brown Jr.</p>
+            
+            <!-- Nova galeria com fotos -->
+            <div class="free-gallery">
+                <div class="gallery-item-free">
+                    <div class="gallery-image-free">
+                        <img src="https://i.pinimg.com/736x/b9/3d/50/b93d50e0c46cd2e73bc01bcd4e334a75.jpg" alt="Charlie Brown Jr em show">
+                    </div>
+                    <div class="gallery-info-free">
+                        <h3>Show ao vivo</h3>
+                        <p>Charlie Brown Jr em apresentação histórica</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item-free">
+                    <div class="gallery-image-free">
+                        <img src="https://i.pinimg.com/736x/8b/23/04/8b230428e7413d6dcec3742e74538117.jpg" alt="Chorão cantando">
+                    </div>
+                    <div class="gallery-info-free">
+                        <h3>Chorão</h3>
+                        <p>O vocalista em momento de performance</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item-free">
+                    <div class="gallery-image-free">
+                        <img src="https://i.pinimg.com/736x/67/46/c8/6746c8501e91ba7c411d1e03a153dde4.jpg" alt="Banda completa">
+                    </div>
+                    <div class="gallery-info-free">
+                        <h3>Formação clássica</h3>
+                        <p>Chorão, Champignon, Marcão, Thiago e Pelado</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item-free">
+                    <div class="gallery-image-free">
+                        <img src="https://s2-g1.glbimg.com/dMjnOJrE7eZlYIIKer8vawrzfoI=/0x0:1600x1067/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/W/K/wAQzZzTr6JRqWl1N67Ow/choraoacervocharliebrownjr.jpg" alt="Show com plateia">
+                    </div>
+                    <div class="gallery-info-free">
+                        <h3>Energia da plateia</h3>
+                        <p>Fãs acompanhando a banda em show</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item-free">
+                    <div class="gallery-image-free">
+                        <img src="https://i.pinimg.com/736x/f0/d9/3c/f0d93c0e896f57d326a77e963ec2f1ea.jpg" alt="Turnê nacional">
+                    </div>
+                    <div class="gallery-info-free">
+                        <h3>Turnê Nacional</h3>
+                        <p>Banda percorrendo o Brasil com sua música</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item-free">
+                    <div class="gallery-image-free">
+                        <img src="https://i.pinimg.com/736x/e0/93/fc/e093fc6a25f35421e54902cef21709f6.jpg" alt="Acústico">
+                    </div>
+                    <div class="gallery-info-free">
+                        <h3>Sessão acústica</h3>
+                        <p>Momento íntimo com a banda</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seção para upload de fotos -->
+            <div class="upload-section">
+                <h3>Adicione suas próprias fotos</h3>
+                <p>Compartilhe suas lembranças do Charlie Brown Jr</p>
+                <input type="file" id="file-input" accept="image/*" multiple>
+                <label for="file-input" class="upload-btn">
+                    <i class="fas fa-upload"></i> Selecionar Fotos
+                </label>
+                <div id="upload-status"></div>
+            </div>
+        </section>
 
-    <!-- ESTILO MUSICAL -->
-    <section id="estilo" class="section-futurista dark-section">
-      <h2 class="section-title">Estilo Musical</h2>
-      <div class="cards-container">
-        <div class="card-futurista">
-          <div class="card-icon">🎸</div>
-          <h3>Fusão de Gêneros</h3>
-          <p>Com uma mistura única de rap, rock, hardcore, reggae e punk, a banda criou uma identidade musical inconfundível.</p>
-        </div>
-        <div class="card-futurista">
-          <div class="card-icon">✍️</div>
-          <h3>Letras Autênticas</h3>
-          <p>Chorão escrevia sobre amizade, superação, amor e crítica social, sempre em uma linguagem acessível e direta.</p>
-        </div>
-        <div class="card-futurista">
-          <div class="card-icon">🛹</div>
-          <h3>Influência do Skate</h3>
-          <p>Mais do que uma banda, o CBJR representava uma cultura, trazendo o universo do skate, do surf e da rua para dentro da música.</p>
-        </div>
-      </div>
-    </section>
+        <section id="contato" class="skate-section">
+            <h2><i class="fas fa-envelope"></i> Fale conosco</h2>
+            <p class="legacy-text">Siga o legado do Charlie Brown Jr. nas redes:</p>
+            
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+            </div>
+            
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" id="nome" placeholder="Nome" required aria-label="Seu nome">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email" required aria-label="Seu email">
+                </div>
+                <div class="form-group">
+                    <textarea id="mensagem" placeholder="Mensagem" rows="5" required aria-label="Sua mensagem"></textarea>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
 
-    <!-- DISCOGRAFIA -->
-    <section id="discografia" class="section-futurista">
-      <h2 class="section-title">Discografia Destacada</h2>
-      <div class="cards-container">
-        <div class="card-futurista album-card">
-          <div class="album-cover" style="background-color: #2a2a72;"></div>
-          <h3>Transpiração Contínua Prolongada (1997)</h3>
-          <p>Inclui "Proibida pra Mim", "Tudo que Ela Gosta de Escutar" e "Lugar ao Sol".</p>
-        </div>
-        <div class="card-futurista album-card">
-          <div class="album-cover" style="background-color: #ff9e01;"></div>
-          <h3>Preço Curto... Prazo Longo (1999)</h3>
-          <p>Clássicos como "Zóio de Lula" e "Confisco" marcaram essa fase de ascensão.</p>
-        </div>
-        <div class="card-futurista album-card">
-          <div class="album-cover" style="background-color: #c51f1f;"></div>
-          <h3>Nadando com os Tubarões (2000)</h3>
-          <p>Sucessos como "Só os Loucos Sabem" e "Dias de Luta, Dias de Glória" conquistaram gerações.</p>
-        </div>
-      </div>
-    </section>
+        <section id="acessibilidade" class="skate-section">
+            <h2><i class="fas fa-universal-access"></i> Acessibilidade</h2>
+            <p>Nosso compromisso é tornar este site acessível para todos os fãs do Charlie Brown Jr.</p>
+            
+            <div class="accessibility-features">
+                <div class="feature">
+                    <i class="fas fa-text-height"></i>
+                    <h3>Controle de Texto</h3>
+                    <p>Aumente ou diminua o tamanho da fonte conforme sua necessidade.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-adjust"></i>
+                    <h3>Alto Contraste</h3>
+                    <p>Alternar para modo de alto contraste para melhor visualização.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-keyboard"></i>
+                    <h3>Navegação por Teclado</h3>
+                    <p>Use a tecla Tab para navegar por todos os elementos do site.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- LEGADO -->
-    <section id="legado" class="section-futurista dark-section">
-      <h2 class="section-title">Legado Cultural</h2>
-      <div class="cards-container">
-        <div class="card-futurista">
-          <div class="card-icon">🌟</div>
-          <h3>Impacto Cultural</h3>
-          <p>O Charlie Brown Jr. transcendeu a música, virando símbolo de atitude e resistência no cenário brasileiro.</p>
-        </div>
-        <div class="card-futurista">
-          <div class="card-icon">🎵</div>
-          <h3>Influência Musical</h3>
-          <p>Inspirou bandas e artistas de diferentes estilos a explorarem misturas musicais e mensagens autênticas.</p>
-        </div>
-        <div class="card-futurista">
-          <div class="card-icon">❤️</div>
-          <h3>Eternidade</h3>
-          <p>Mesmo após a perda de Chorão e Champignon em 2013, o legado continua vivo, atravessando gerações.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+    <footer>
+        <p>&copy; 2025 - Tributo a Charlie Brown Jr | Todos os fãs são bem-vindos!</p>
+    </footer>
 
-  <!-- FOOTER -->
-  <footer class="footer-futurista">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <h3>CHARLIE BROWN JR.</h3>
-        <p>1992 - Eternamente</p>
-      </div>
-      <div class="footer-info">
-        <p>© 2025 Charlie Brown Jr. - Todos os direitos reservados.</p>
-        <p>Site tributo desenvolvido com ❤️ para fãs</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurações de acessibilidade
+            const body = document.body;
+            const baseFontSize = 16; // Tamanho base em pixels
+            let currentFontSize = baseFontSize;
+            const minFontSize = 12;
+            const maxFontSize = 24;
+            let isHighContrast = false;
+            
+            // Elementos para ajustar acessibilidade
+            const fontIncreaseBtn = document.getElementById('font-increase');
+            const fontDecreaseBtn = document.getElementById('font-decrease');
+            const highContrastBtn = document.getElementById('high-contrast');
+            
+            // Função para atualizar o tamanho da fonte
+            function updateFontSize() {
+                document.documentElement.style.fontSize = currentFontSize + 'px';
+                
+                // Desabilitar/abilitar botões conforme os limites
+                fontDecreaseBtn.disabled = (currentFontSize <= minFontSize);
+                fontIncreaseBtn.disabled = (currentFontSize >= maxFontSize);
+            }
+            
+            // Aumentar fonte
+            fontIncreaseBtn.addEventListener('click', function() {
+                if (currentFontSize < maxFontSize) {
+                    currentFontSize += 2;
+                    updateFontSize();
+                }
+            });
+            
+            // Diminuir fonte
+            fontDecreaseBtn.addEventListener('click', function() {
+                if (currentFontSize > minFontSize) {
+                    currentFontSize -= 2;
+                    updateFontSize();
+                }
+            });
+            
+            // Alternar alto contraste
+            highContrastBtn.addEventListener('click', function() {
+                isHighContrast = !isHighContrast;
+                if (isHighContrast) {
+                    body.classList.add('high-contrast');
+                    highContrastBtn.setAttribute('aria-pressed', 'true');
+                } else {
+                    body.classList.remove('high-contrast');
+                    highContrastBtn.setAttribute('aria-pressed', 'false');
+                }
+            });
+            
+            // Upload de imagens
+            const fileInput = document.getElementById('file-input');
+            const uploadStatus = document.getElementById('upload-status');
+            const gallery = document.querySelector('.free-gallery');
+            
+            fileInput.addEventListener('change', function(e) {
+                const files = e.target.files;
+                
+                if (files.length > 0) {
+                    uploadStatus.textContent = `Adicionando ${files.length} foto(s)...`;
+                    
+                    // Simular upload (num cenário real, aqui enviaria para um servidor)
+                    setTimeout(() => {
+                        for (let i = 0; i < files.length; i++) {
+                            const file = files[i];
+                            const reader = new FileReader();
+                            
+                            reader.onload = function(e) {
+                                const galleryItem = document.createElement('div');
+                                galleryItem.className = 'gallery-item-free';
+                                
+                                // Alternar a rotação para itens novos
+                                if (gallery.children.length % 2 === 0) {
+                                    galleryItem.style.transform = 'rotate(2deg)';
+                                } else {
+                                    galleryItem.style.transform = 'rotate(-2deg)';
+                                }
+                                
+                                galleryItem.innerHTML = `
+                                    <div class="gallery-image-free">
+                                        <img src="${e.target.result}" alt="Foto adicionada por fã">
+                                    </div>
+                                    <div class="gallery-info-free">
+                                        <h3>Sua foto</h3>
+                                        <p>Adicionada por você</p>
+                                    </div>
+                                `;
+                                
+                                gallery.appendChild(galleryItem);
+                                
+                                // Adicionar efeitos de hover aos novos itens
+                                galleryItem.addEventListener('mouseenter', function() {
+                                    this.style.transform = 'scale(1.05) rotate(0deg)';
+                                });
+                                
+                                galleryItem.addEventListener('mouseleave', function() {
+                                    if (Array.from(gallery.children).indexOf(this) % 2 === 0) {
+                                        this.style.transform = 'rotate(2deg)';
+                                    } else {
+                                        this.style.transform = 'rotate(-2deg)';
+                                    }
+                                });
+                            };
+                            
+                            reader.readAsDataURL(file);
+                        }
+                        
+                        uploadStatus.textContent = `${files.length} foto(s) adicionada(s) com sucesso!`;
+                        
+                        // Limpar o input
+                        fileInput.value = '';
+                    }, 1000);
+                }
+            });
+            
+            // Form submission handling
+            const contactForm = document.getElementById('contact-form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nome = document.getElementById('nome').value;
+                    const email = document.getElementById('email').value;
+                    const mensagem = document.getElementById('mensagem').value;
+                    
+                    // Basic validation
+                    if (nome && email && mensagem) {
+                        // Aqui você normalmente enviaria os dados para um servidor
+                        alert('Mensagem enviada com sucesso! Obrigado pelo contato.');
+                        contactForm.reset();
+                    } else {
+                        alert('Por favor, preencha todos os campos.');
+                    }
+                });
+            }
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Ajuste para o menu fixo
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Adicionar navegação por teclado para acessibilidade
+            document.addEventListener('keydown', function(e) {
+                // Tecla Tab - navegação padrão já funciona
+                // Tecla Enter ou Espaço para ativar elementos focados
+                if (e.key === 'Enter' || e.key === ' ') {
+                    const activeElement = document.activeElement;
+                    if (activeElement.tagName === 'A' || activeElement.tagName === 'BUTTON') {
+                        activeElement.click();
+                        e.preventDefault();
+                    }
+                }
+            });
+            
+            // Inicializar o tamanho da fonte
+            updateFontSize();
+        });
+    </script>
 </body>
 </html>
